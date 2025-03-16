@@ -9,31 +9,31 @@ export class User {
   @Column({ type: 'varchar', length: 50 })
   firstName: string;
 
-  @Column({ type: 'varchar', length: 50 , nullable: true })
-  middleName: string;
+  // @Column({ type: 'varchar', length: 50 , nullable: true })
+  // middleName: string;
 
   @Column({ type: 'varchar', length: 50 })
   lastName: string;
 
-  @Column({ type: 'varchar', length: 15 })
+  @Column({ type: 'varchar', length: 15, nullable: true })
   mobile: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ type: 'varchar', length: 50, unique: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 32 })
+  @Column({ type: 'varchar', length: 255 })
   passwordHash: string;
 
-  @Column({ type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP', nullable: true })
   registeredAt: Date;
 
   @Column({ type: 'timestamp with time zone', nullable: true })
   lastLogin: Date;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   intro: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   profile: string;
 
   // @OneToMany(() => Post, (post) => post.author)
