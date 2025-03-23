@@ -53,11 +53,20 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
+  async findOneByEmail(email: string): Promise<User | null> {
+    const rs = await this.usersRepository.findOne({ where: { email } });
+    return rs;
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  async compareHashPassword(incomingPwd: string, hashedPwd: string): Promise<boolean> {
+    return bcrypt.compare(incomingPwd, hashedPwd);
   }
 }
